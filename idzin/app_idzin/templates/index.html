@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    height: 1000px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+/* image rotation */
+img.rot {
+  border-radius: 50%;
+  -webkit-transition: -webkit-transform .8s ease-in-out;
+          transition:         transform .8s ease-in-out;
+}
+img.rot {
+  height: 500px;
+  width: 500px;
+<!--  border: 1px solid;-->
+}
+img.rot:hover{
+  animation: rotate 1s linear infinite
+}
+@keyframes rotate{
+  100%{
+   transform: rotate(360deg)
+  }
+}
+
+/* button style */
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #555555;
+  border: 2px solid #A52A2A;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 16px;
+  padding: 12px;
+  width: 262px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+
+
+</style>
+</head>
+<body>
+
+<h2>Гадание по книге Перемен</h2>
+
+<div class="row">
+  <div class="column" style="background-color:#aaa;">
+    <h2>Круг И цзин</h2>
+
+    <p>Книга состоит из 64-х специфических символов (гексаграмм) и связанных с ними текстов.
+        Эти символы представляют собой комбинации прерывистых и сплошных черт, располагающихся
+        друг над другом в шести позициях и символизирующих полярные мировые принципы Инь и Ян.
+        Каждая комбинация  выражает ту или иную жизненную ситуацию во времени с точки зрения
+        её постепенного развития. </p>
+     <p><img class="rot" src="{% static "images/1.jpg" %}" alt="idzin circle"/> </p>
+  </div>
+  <div class="column" style="background-color:#bbb;">
+    <h2>Как гадать?</h2>
+    <p>1. Мысленно задайте вопрос.</p>
+    <p>2. Введите случайное число в поле ниже.</p>
+    <p> <form action="" method="POST">
+        {% csrf_token %}
+    <table>
+        {{ form }}
+    </table>
+<!--    <input class="button" type="submit" value="Send"  style="vertical-align:middle"><span>Hover </span>>-->
+      <button type="submit" class="button" style="vertical-align:middle"><span>Получить результат</span></button>
+</form></p>
+    <p>{{ input_value }}</p>
+    <p>{{ line_1|safe }}</p>
+    <p>{{ line_2|safe }}</p>
+    <p>{{ line_3|safe }}</p>
+    <p>{{ line_4|safe }}</p>
+    <p>{{ line_5|safe }}</p>
+    <p>{{ line_6|safe }}</p>
+    <p>{{ dict_idzin }}</p>
+  </div>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
