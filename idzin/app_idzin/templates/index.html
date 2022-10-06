@@ -103,8 +103,8 @@ img.rot:hover{
   </div>
   <div class="column" style="background-color:#bbb;">
     <h2>Как гадать?</h2>
-    <p>1. Мысленно задайте вопрос.</p>
-    <p>2. Введите случайное число в поле ниже.</p>
+    <p>1. Мысленно задайте вопрос и поблагодарите книгу Перемен.</p>
+    <p>2. Введите пришедшее на ум число в поле ниже. С учетом его значения будет сгенерирована случайная последовательность гексаграммы.</p>
     <p> <form action="" method="POST">
         {% csrf_token %}
     <table>
@@ -113,14 +113,14 @@ img.rot:hover{
 <!--    <input class="button" type="submit" value="Send"  style="vertical-align:middle"><span>Hover </span>>-->
       <button type="submit" class="button" style="vertical-align:middle"><span>Получить результат</span></button>
 </form></p>
-    <p>{{ input_value }}</p>
+    <p>{{ name }}</p>
     <p>{{ line_1|safe }}</p>
     <p>{{ line_2|safe }}</p>
     <p>{{ line_3|safe }}</p>
     <p>{{ line_4|safe }}</p>
     <p>{{ line_5|safe }}</p>
     <p>{{ line_6|safe }}</p>
-    <p>{{ dict_idzin }}</p>
+    <p>{{ description }}</p>
   </div>
 </div>
 
